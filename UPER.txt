@@ -1,0 +1,78 @@
+U - Understand
+
+REPL parser means a continual loop where the terminal will READ user input, EVALUATE the code
+PRINT any results (room name, descriptions, items in room, etc) and LOOP back to step 1 to continue the game
+
+while True: to enable continuous loop [unless user specifies 'quit']
+
+
+
+3 separate files: 
+    1. 'adv.py' is main file for main logic across the game
+        Add REPL parser that allows user to input directional commands to move player
+        directional commands = [
+            north/n,
+            east/e,
+            south/s,
+            west/w
+        ]
+
+        AFTER each move REPL should print name & description of user's current room location
+        should print an error or dead end message if user tries to move where there's no room
+
+        allow parser to understand 2 words; len(sys.argv)?
+        Lookup 'split entered command to check if 1 or 2 words'
+
+        assign 'get' command a variable with logic that takes an Item name and will be used to pick up that Item
+        ex: get Butterknife
+
+        if users_input == 'get' or 'take'
+            loop through items in current room to see if Item is there
+            if Item is in Room
+                add Item to user's inventory
+            else:
+                print('That is not in this room ):')
+
+        assign 'drop' command a variable with logic that removes an Item name from user's inventory [after MVP is complete, 
+        make it so it reappears in the room once it is dropped from the player's inventory]
+        
+        add inventory/i commands that both show a list of items currently carried by the player
+
+    2. 'room.py' is where class Room will be.
+        'class Room' has (self, name, description) attributes
+        also add (..., n_to, s_to, e_to, w_to) attributes to connect the rooms and point to the room in respective direction
+
+        'class Room' uses .extend(item) with a list that holds Item's currently in that room 
+        ex  items = [
+                Item('Moldy Food': 'Ew don't think about eating that...unless?'),
+                Item('Butter Knife': 'This is only used for dicing butter and nothing violent'),
+                Item('Starbucks Coffee Cup': 'Wait why is this still on set?')
+            ]
+        'class Room' inherits 'class Item' so that in the adv.py file
+        we can loop through items in that current room AFTER
+        they're extended and print it for user to see
+
+    3. 'player.py' is where class Player will be.
+        'class Player()' has (self, name, description) attr
+
+        'class Player' can also add Item's to inventory which can also be a list of items in inventory
+        just like how we loop through items in room.
+
+    4. CREATE 'item.py' file and add 'class Item'
+        'class Item()' has  (self, name, description) attr
+        NOTE: This will be parent class or base class for specialized item types to be declared later
+
+        add 
+        def on_take(self, name):
+            self.name = name
+            return f'You have picked up {self.name}'
+
+        add 
+        def on_drop(self, name):
+            self.name = name
+            return f'You have dropped {self.name}'
+P - Plan
+
+E - Execute
+
+R - Reflect/Refactor

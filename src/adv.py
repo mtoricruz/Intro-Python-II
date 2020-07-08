@@ -1,4 +1,5 @@
 from room import Room
+import textwrap
 
 # Declare all the rooms
 
@@ -20,7 +21,7 @@ to north. The smell of gold permeates the air."""),
 chamber! Sadly, it has already been completely emptied by
 earlier adventurers. The only exit is to the south."""),
 }
-
+# Can I do room[1].update({loop through list for foyer room})
 
 # Link rooms together
 
@@ -49,3 +50,6 @@ room['treasure'].s_to = room['narrow']
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+print(room['outside'])
+while True:
+    user_input = input()
