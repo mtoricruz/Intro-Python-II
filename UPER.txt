@@ -75,15 +75,14 @@ while True: to enable continuous loop [unless user specifies 'quit']
     
 P - Plan
     Flow:
-    - Start up program
+    [x] Start up program
         - Add Player/Room classes and allow Rooms to carry multiple items
-        - Add class Item to newly created item.py file
-    - User sees current room they are in
-    - User can input directional commands (n,e,s,w) to possibly go into different room
-    - if no room in a specific direction run error or print dead end message
-    - else allow user to move to that room
-    - User has option to examine items in room 
-        [run this option everytime user enters room]
+        [x] Add class Item to newly created item.py file
+    [x] User sees current room they are in
+    [x] User can input directional commands (n,e,s,w) to possibly go into different room
+    [x] if no room in a specific direction run error or print dead end message
+    [x] else allow user to move to that room
+    - User can see items in current room
     - User can pick up items (get [ITEM_NAME]) in current room to add to their inventory
     - User can carry multiple items 
     - User can drop items (drop [ITEM_NAME]) in inventory

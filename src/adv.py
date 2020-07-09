@@ -1,6 +1,8 @@
 from room import Room
 from player import Player
+from item import Item
 import textwrap
+import random
 
 # Declare all the rooms
 
@@ -22,7 +24,10 @@ to north. The smell of gold permeates the air."""),
 chamber! Sadly, it has already been completely emptied by
 earlier adventurers. The only exit is to the south."""),
 }
-# Can I do room[1].update({loop through list for foyer room})
+# to add items in room, can I append from the specific room key value ex: room['foyer'].append(item)
+# the answer is no. there is no explicit method to append an item to a dict
+
+
 
 # Link rooms together
 
@@ -38,6 +43,8 @@ room['treasure'].s_to = room['narrow']
 #
 # Main
 #
+
+game_items = ['mug', 'coin', 'sword', 'map']
 
 
 # Make a new player object that is currently in the 'outside' room.
@@ -63,3 +70,13 @@ while True:
         # check to see if we can go in that direction
         # if we can, go there
         player.try_direction(action)
+
+        # Add item to room
+        player.location.add_item_to_room(random.choice(game_items))
+
+        # add item to player's inventory
+        player.add_to_inventory(player.location.items[0], player.location)
+
+    elif action == 'i':
+        print('You have ', player.inventory, 'in your inventory')
+        player.drop_item
