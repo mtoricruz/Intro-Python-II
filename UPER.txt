@@ -42,7 +42,7 @@ while True: to enable continuous loop [unless user specifies 'quit']
         'class Room' has (self, name, description) attributes
         also add (..., n_to, s_to, e_to, w_to) attributes to connect the rooms and point to the room in respective direction
 
-        'class Room' uses .extend(item) with a list that holds Item's currently in that room 
+        'class Room' uses .append(item) with a list that holds Item's currently in that room 
         ex  items = [
                 Item('Moldy Food': 'Ew don't think about eating that...unless?'),
                 Item('Butter Knife': 'This is only used for dicing butter and nothing violent'),
@@ -71,8 +71,28 @@ while True: to enable continuous loop [unless user specifies 'quit']
         def on_drop(self, name):
             self.name = name
             return f'You have dropped {self.name}'
+
+    
 P - Plan
+    Flow:
+    - Start up program
+        - Add Player/Room classes and allow Rooms to carry multiple items
+        - Add class Item to newly created item.py file
+    - User sees current room they are in
+    - User can input directional commands (n,e,s,w) to possibly go into different room
+    - if no room in a specific direction run error or print dead end message
+    - else allow user to move to that room
+    - User has option to examine items in room 
+        [run this option everytime user enters room]
+    - User can pick up items (get [ITEM_NAME]) in current room to add to their inventory
+    - User can carry multiple items 
+    - User can drop items (drop [ITEM_NAME]) in inventory
+
 
 E - Execute
 
 R - Reflect/Refactor
+
+    How to add inventory cap (28 slots)
+    How to allow user to manually enter'examine' to see items in current room
+    Add list of possible directions
